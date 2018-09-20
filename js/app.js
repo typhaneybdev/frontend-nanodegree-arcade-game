@@ -1,4 +1,7 @@
-// Enemies our player must avoid
+//checking files
+
+
+// Enemies our player must avoid 
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -21,6 +24,28 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//walkthrough https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000 w/rodrick
+class Entity {
+    constructor() {
+      this.sprite = 'images/';
+      this.x = 2;
+      this.y = 5;
+    }
+
+    render() {
+      ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
+    }
+}
+
+class Player extends Entity {
+    constructor() {
+        super();
+        this.sprite += 'char-boy.png';
+        Player.prototype.update = function(){
+
+        };
+    }
+}
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -30,8 +55,8 @@ Enemy.prototype.render = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-
-
+const player = new Player();
+render();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
