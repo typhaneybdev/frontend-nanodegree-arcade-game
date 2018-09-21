@@ -42,7 +42,7 @@ class Player extends Entity { //defines player class
         super(); //inherits Entity methods
         this.x = 203;
         this.y = 420;
-        this.sprite += 'char-boy.png';
+        this.sprite += 'char-princess-girl.png';
         Player.prototype.update = function() {
         };
     }
@@ -71,20 +71,19 @@ class Player extends Entity { //defines player class
 class Enemy extends Entity {
     constructor(x, y) {
         super();
-        this.sprite += 'images/enemy-bug.png';
+        this.sprite += 'enemy-bug.png';
         this.x = x;
         this.y = y;
         Enemy.prototype.update = function() {
         };
+  
     }
-
-
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+const allenemies = [...Array(3)].map((_,i)=> new Enemy(0,i+1));
 const player = new Player(); //declares player
 
 // This listens for key presses and sends the keys to your
