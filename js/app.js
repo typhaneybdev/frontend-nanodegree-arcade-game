@@ -28,8 +28,8 @@
 class Entity { //defines class for players and enemys
     constructor() { //initializes objects within class
       this.sprite = 'images/'; //targets image folder
-      this.x = 203;
-      this.y = 420;
+      this.x = 0;
+      this.y = 0;
     }
 
     render() { //renders content
@@ -40,6 +40,8 @@ class Entity { //defines class for players and enemys
 class Player extends Entity { //defines player class
     constructor() {
         super(); //inherits Entity methods
+        this.x = 203;
+        this.y = 420;
         this.sprite += 'char-boy.png';
         Player.prototype.update = function() {
         };
