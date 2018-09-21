@@ -28,12 +28,12 @@
 class Entity { //defines class for players and enemys
     constructor() { //initializes objects within class
       this.sprite = 'images/'; //targets image folder
-      this.x = 2;
-      this.y = 5;
+      this.x = 203;
+      this.y = 420;
     }
 
     render() { //renders content
-      ctx.drawImage(Resources.get(this.sprite), this.x * 101, this.y * 83);
+      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
 }
 
