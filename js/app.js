@@ -1,15 +1,15 @@
-//checking files
-
 
 // Enemies our player must avoid
-//var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-  //  this.sprite = 'images/enemy-bug.png';
-//};
+// Variables applied to each of our instances go here,
+// we've provided one for you to get started
+// The image/sprite for our enemies, this uses
+// a helper we've provided to easily load images
+//walkthrough https://matthewcranford.com/arcade-game-walkthrough-part-5-adding-enemies/ 7/13
+var Enemy = function() {
+    this.x = 0;
+    this.y = 0;
+    this.sprite = 'images/enemy-bug.png';
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -20,9 +20,9 @@
 //};
 
 // Draw the enemy on the screen, required method for game
-//Enemy.prototype.render = function() {
-  //  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-//};
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 
 //walkthrough https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000 w/rodrick
 class Entity { //defines class for players and enemys
@@ -68,23 +68,26 @@ class Player extends Entity { //defines player class
 
 // This class requires an update(), render() and
 // a handleInput() method.
-class Enemy extends Entity {
+
+/*class Enemy extends Entity {
     constructor(x, y) {
         super();
-        this.sprite += 'enemy-bug.png';
+        this.sprite += 'images/enemy-bug.png';
         this.x = x;
         this.y = y;
         Enemy.prototype.update = function() {
         };
-  
     }
-}
+}*/
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const allenemies = [...Array(3)].map((_,i)=> new Enemy(0,i+1));
-const player = new Player(); //declares player
+
+const player = new Player(); //declares player stores player object in variable
+const enemy1 = new Enemy(); //declares enemy stores enemy object in variable
+const allEnemies = []; // array to store enemies
+allEnemies.push(enemy1); //pushes enemies into array
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
