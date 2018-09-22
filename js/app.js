@@ -40,26 +40,37 @@ class Entity { //defines class for players and enemys
 class Player extends Entity { //defines player class
     constructor() {
         super(); //inherits Entity methods
-        this.x = 203;
-        this.y = 420;
+        this.startx = 101 * 2; //calculates position of player based on square
+        this.starty = 83 * 5;
+        this.x = this.startx;
+        this.y = this.starty; //positions player at start
         this.sprite += 'char-princess-girl.png';
         Player.prototype.update = function() {
         };
     }
-    handleInput(input) { //update player x & Y coordinates base on input
+    handleInput(input) { //update player x & Y coordinates based on input
       //https://matthewcranford.com/arcade-game-walkthrough-part-4-heros-first-steps/ 7/10/18
+      //switch statement handles canvas boundary
       switch(input) {
           case 'left':
-              this.x -= 20;
+              if (this.x > 0) {
+                  this.x -= 101;
+              }
               break;
           case 'up':
-              this.y -= 20;
+              if (this.y > 101) {
+              this.y -= 101;
+              }
               break;
           case 'right':
-              this.x += 20;
+              if (this.x < 101 * 4) {
+                  this.x += 101;
+              }
               break;
           case 'down':
-              this.y += 20;
+              if (this.y < 101 * 4) {
+              this.y += 101;
+              }
               break;
 
       }
@@ -68,17 +79,6 @@ class Player extends Entity { //defines player class
 
 // This class requires an update(), render() and
 // a handleInput() method.
-
-/*class Enemy extends Entity {
-    constructor(x, y) {
-        super();
-        this.sprite += 'images/enemy-bug.png';
-        this.x = x;
-        this.y = y;
-        Enemy.prototype.update = function() {
-        };
-    }
-}*/
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
