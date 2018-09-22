@@ -5,19 +5,28 @@
 // The image/sprite for our enemies, this uses
 // a helper we've provided to easily load images
 //walkthrough https://matthewcranford.com/arcade-game-walkthrough-part-5-adding-enemies/ 7/13
-var Enemy = function() {
-    this.x = 0;
-    this.y = 0;
+var Enemy = function(x, y, speed) {
+    this.x = x;
+    this.y = y + 55;
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    this.resetPos = -101;
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-//Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-//};
+    if (this.x < 101 * 4) {
+       this.x += this.speed * dt;
+    }
+    else { //resets enemy position
+      this.x = this.resetPos;
+    }
+
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -84,11 +93,14 @@ class Player extends Entity { //defines player class
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
+//initiate objects
 const player = new Player(); //declares player stores player object in variable
-const enemy1 = new Enemy(); //declares enemy stores enemy object in variable
+const enemy1 = new Enemy(-101, 10, 100); //declares enemy stores enemy object in variable
+const enemy2 = new Enemy(-101, 200, 200);
+const enemy3 = new Enemy((-101*2.5), 83, 200);
 const allEnemies = []; // array to store enemies
-allEnemies.push(enemy1); //pushes enemies into array
-
+allEnemies.push(enemy1, enemy2, enemy3); //pushes enemies into array
+console.log(allEnemies);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
