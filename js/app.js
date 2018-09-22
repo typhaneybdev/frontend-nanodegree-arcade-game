@@ -5,7 +5,7 @@
 // The image/sprite for our enemies, this uses
 // a helper we've provided to easily load images
 //walkthrough https://matthewcranford.com/arcade-game-walkthrough-part-5-adding-enemies/ 7/13
-var Enemy = function(x, y, speed) {
+var Enemy = function(x, y, speed) { //position and speed parameters
     this.x = x;
     this.y = y + 55;
     this.speed = speed;
@@ -27,6 +27,14 @@ Enemy.prototype.update = function(dt) {
     }
 
 };
+//todo check for collision 
+Enemy.prototype.checkCollision = function() {
+    for (let enemy of allEnemies) {
+      if (player.y === enemy.y)
+      console.log('same row');
+    }
+    console.log(player.y, enemy.y);
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -45,6 +53,7 @@ class Entity { //defines class for players and enemys
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
 }
+
 
 class Player extends Entity { //defines player class
     constructor() {
@@ -100,7 +109,7 @@ const enemy2 = new Enemy(-101, 200, 200);
 const enemy3 = new Enemy((-101*2.5), 83, 200);
 const allEnemies = []; // array to store enemies
 allEnemies.push(enemy1, enemy2, enemy3); //pushes enemies into array
-console.log(allEnemies);
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
