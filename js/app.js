@@ -7,7 +7,7 @@
 //walkthrough https://matthewcranford.com/arcade-game-walkthrough-part-5-adding-enemies/ 7/13
 var Enemy = function(x, y, speed) { //position and speed parameters
     this.x = x;
-    this.y = y + 55;
+    this.y = y + 15;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
     this.resetPos = -101;
@@ -25,16 +25,15 @@ Enemy.prototype.update = function(dt) {
     else { //resets enemy position
       this.x = this.resetPos;
     }
+    this.checkCollision();
+};
+//todo check for collision
+Enemy.prototype.checkCollision = function() {
+    if (player.y === this.y && player.x === this.x); {
+
+}
 
 };
-//todo check for collision 
-Enemy.prototype.checkCollision = function() {
-    for (let enemy of allEnemies) {
-      if (player.y === enemy.y)
-      console.log('same row');
-    }
-    console.log(player.y, enemy.y);
-}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -59,7 +58,7 @@ class Player extends Entity { //defines player class
     constructor() {
         super(); //inherits Entity methods
         this.startx = 101 * 2; //calculates position of player based on square
-        this.starty = 83 * 5;
+        this.starty = (83 * 5) + 15;
         this.x = this.startx;
         this.y = this.starty; //positions player at start
         this.sprite += 'char-princess-girl.png';
@@ -104,9 +103,9 @@ class Player extends Entity { //defines player class
 
 //initiate objects
 const player = new Player(); //declares player stores player object in variable
-const enemy1 = new Enemy(-101, 10, 100); //declares enemy stores enemy object in variable
-const enemy2 = new Enemy(-101, 200, 200);
-const enemy3 = new Enemy((-101*2.5), 83, 200);
+const enemy1 = new Enemy(-101, 50, 100); //declares enemy stores enemy object in variable
+const enemy2 = new Enemy(-101, 130, 200);
+const enemy3 = new Enemy((-101*2.5), 220, 200);
 const allEnemies = []; // array to store enemies
 allEnemies.push(enemy1, enemy2, enemy3); //pushes enemies into array
 
