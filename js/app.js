@@ -36,10 +36,35 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.checkCollision = function() {
 
     if (player.y === this.y && (this.x + this.step > player.x && this.x < player.x + player.step)) {
+
       resetPlayer();
 }
+if (player.y === 26) {
+  this.y = 0;
+  this.x = 0;
+  toggleModal();
+  win.cacnelAnimationFrame(main);
+}//check for win
+}
 
-};
+
+  function toggleModal() { // function to toggle modal
+  const modal = document.querySelector('.modal_background');
+  modal.classList.toggle('hide');
+}
+
+toggleModal();
+toggleModal();
+
+//button code and styling from my memory game project
+const replay = document.querySelector('.modal_btn_replay');
+replay.addEventListener('click', function(e) {
+  toggleModal();
+  resetPlayer();
+
+})
+
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -110,9 +135,9 @@ class Player extends Entity { //defines player class
 
 //initiate objects
 const player = new Player(); //declares player stores player object in variable
-const enemy1 = new Enemy(-101, 26, 100); //declares enemy stores enemy object in variable
+const enemy1 = new Enemy(-101, 26, 60); //declares enemy stores enemy object in variable
 const enemy2 = new Enemy(-101, 127, 200);
-const enemy3 = new Enemy((-101*2.5), 228, 200);
+const enemy3 = new Enemy((-101*2.5), 228, 100);
 const allEnemies = []; // array to store enemies
 allEnemies.push(enemy1, enemy2, enemy3); //pushes enemies into array
 
