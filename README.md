@@ -3,7 +3,7 @@
 
 This is a single player arcade game clone implementing object oriented javaScript. Project starter code provided by Udacity.
 
-Play live version [HERE](http://typhaneybennett.com/arcade_game/index.html)
+Play live version [HERE](http://typhaneybennett.com/Arcade_game/index.html)
 
 Basic Functionality Per Udacity project guide lines
 
