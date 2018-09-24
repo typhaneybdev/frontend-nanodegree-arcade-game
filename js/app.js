@@ -5,6 +5,10 @@
 // The image/sprite for our enemies, this uses
 // a helper we've provided to easily load images
 //walkthrough and own logic https://matthewcranford.com/arcade-game-walkthrough-part-5-adding-enemies/ 7/13
+function resetPlayer() {
+  location.reload(); ////https://developer.mozilla.org/en-US/docs/Web/API/Location/reload reloads game
+}
+
 var Enemy = function(x, y, speed) { //position and speed parameters
     this.x = x;
     this.y = y;
@@ -28,12 +32,11 @@ Enemy.prototype.update = function(dt) {
     }
     this.checkCollision();
 };
-//checking for collision based in coordinates
+//checking for collision based on coordinates
 Enemy.prototype.checkCollision = function() {
 
     if (player.y === this.y && (this.x + this.step > player.x && this.x < player.x + player.step)) {
-
-
+      resetPlayer();
 }
 
 };
