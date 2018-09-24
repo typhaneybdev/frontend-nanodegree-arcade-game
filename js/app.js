@@ -43,7 +43,7 @@ if (player.y === 26) {
   this.y = 0;
   this.x = 0;
   toggleModal();
-  win.cacnelAnimationFrame(main);
+  win.cancelAnimationFrame(main);
 }//check for win
 }
 
