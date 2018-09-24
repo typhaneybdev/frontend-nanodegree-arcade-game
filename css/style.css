@@ -1,5 +1,5 @@
 body {
-    text-align: center;
+  text-align: center;
 }
 
 .modal_background {
@@ -15,7 +15,6 @@ body {
   width: 400px;
   border-radius: 5px;
   transform: translate(120%, 70%);
-
   background: #ffffff;
 }
 
@@ -28,7 +27,6 @@ body {
 }
 
 .modal_title {
-
   transform: translate(60%, 50%);
 }
 
