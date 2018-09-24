@@ -4,10 +4,11 @@
 // we've provided one for you to get started
 // The image/sprite for our enemies, this uses
 // a helper we've provided to easily load images
-//walkthrough https://matthewcranford.com/arcade-game-walkthrough-part-5-adding-enemies/ 7/13
+//walkthrough and own logic https://matthewcranford.com/arcade-game-walkthrough-part-5-adding-enemies/ 7/13
 var Enemy = function(x, y, speed) { //position and speed parameters
     this.x = x;
-    this.y = y + 15;
+    this.y = y;
+    this.step = 101
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
     this.resetPos = -101;
@@ -27,9 +28,11 @@ Enemy.prototype.update = function(dt) {
     }
     this.checkCollision();
 };
-//todo check for collision
+//checking for collision based in coordinates
 Enemy.prototype.checkCollision = function() {
-    if (player.y === this.y && player.x === this.x); {
+
+    if (player.y === this.y && (this.x + this.step > player.x && this.x < player.x + player.step)) {
+
 
 }
 
@@ -46,6 +49,7 @@ class Entity { //defines class for players and enemys
       this.sprite = 'images/'; //targets image folder
       this.x = 0;
       this.y = 0;
+      this.step = 101;
     }
 
     render() { //renders content
@@ -103,9 +107,9 @@ class Player extends Entity { //defines player class
 
 //initiate objects
 const player = new Player(); //declares player stores player object in variable
-const enemy1 = new Enemy(-101, 50, 100); //declares enemy stores enemy object in variable
-const enemy2 = new Enemy(-101, 130, 200);
-const enemy3 = new Enemy((-101*2.5), 220, 200);
+const enemy1 = new Enemy(-101, 26, 100); //declares enemy stores enemy object in variable
+const enemy2 = new Enemy(-101, 127, 200);
+const enemy3 = new Enemy((-101*2.5), 228, 200);
 const allEnemies = []; // array to store enemies
 allEnemies.push(enemy1, enemy2, enemy3); //pushes enemies into array
 
