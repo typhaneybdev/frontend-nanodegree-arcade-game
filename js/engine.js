@@ -56,9 +56,12 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
+         //https://matthewcranford.com/arcade-game-walkthrough-part-6-collisions-win-conditions-and-game-resets/ 7/17
+         //if (player.win === true) {
+           //console.log('game over');
+         //}
 
-
-        win.requestAnimationFrame(main);
+         win.requestAnimationFrame(main);
     }
 
     /* This function does some initial setup that should only occur once,
@@ -82,8 +85,17 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        //checkCollisions();
+        checkCollisions();
     }
+    function checkCollisions() {
+        allEnemies.forEach(enemy => { // checks if player and enemy collide then resets players position
+            if(enemy.checkCollisions(player) || player.checkCollisions(enemy)) {
+                  player.y = 5;
+                  player.x = 2;
+            }
+        });
+    }
+
 
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
