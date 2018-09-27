@@ -2,9 +2,9 @@ body {
   text-align: center;
 }
 
-.modal_background {
+/*.modal_background {
   /*<!--https://matthewcranford.com/memory-game-walkthrough-part-7-making-a-modal/-->*/
-  position: absolute;
+/*  position: absolute;
   top: 0;
   left: 0;
   height: 100% width: 100% background: rgba(0, 0, 0, 0.438);
@@ -53,4 +53,4 @@ body {
 
 .hide {
   display: none;
-}
+}*/

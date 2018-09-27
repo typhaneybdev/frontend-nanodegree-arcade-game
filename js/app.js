@@ -4,7 +4,7 @@ function resetPlayer() {
       location.reload(); //https://developer.mozilla.org/en-US/docs/Web/API/Location/reload reloads game
 }
 
-function toggleModal() { // function to toggle modal
+/*todo function toggleModal() { // function to toggle modal
   const modal = document.querySelector('.modal_background');
   modal.classList.toggle('hide');
 }
@@ -18,8 +18,7 @@ replay.addEventListener('click', function(e) {
   toggleModal();
   resetPlayer();
 
-})
-
+})*/
 
 //walkthrough https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000 w/rodrick
 class Entity { //defines class for players and enemys
@@ -61,8 +60,8 @@ class Player extends Entity { //defines player class
     update(dt) {
         super.update();
         if (this.isOutofBoundsy && !this.moving && !this.wim) {
-
-          toggleModal();
+          resetPlayer();
+          //toggleModal();
           this.win = true;
         }
     }
@@ -94,10 +93,10 @@ class Player extends Entity { //defines player class
 }
 
 class Enemy extends Entity { // defines enemy class
-    constructor(x, y, speed) {
+    constructor(x, y,) {
         super();// //inherits Entity methods
         this.sprite += 'enemy-bug.png';
-        this.speed = speed;
+        this.variableSpeed = Math.floor(Math.random() * 10); //returns a random integer from 1-9
         this.x = x;
         this.y = y;
     }
@@ -108,7 +107,7 @@ class Enemy extends Entity { // defines enemy class
               this.x = -1; //enemy moves off board
         }
         else {
-          this.x += dt;
+          this.x += this.variableSpeed * dt; //randomizes enemy speed
         }
     }
 }
@@ -123,6 +122,9 @@ class Enemy extends Entity { // defines enemy class
 
 const player = new Player(); //declares player
 const allEnemies = [...Array(3)].map((_,i)=> new Enemy(0,i+1)); //places enemies in an array
+
+
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
