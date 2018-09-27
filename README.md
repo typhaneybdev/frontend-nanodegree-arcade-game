@@ -5,6 +5,8 @@ This is a single player arcade game clone implementing object oriented javaScrip
 
 Play live version [HERE](http://typhaneybennett.com/Arcade_game/index.html)
 
+If you would like to play this game locally click > clone or download > then download zip > unzip the file and open the index.html file in your favorite browser and you are good to go!
+
 Basic Functionality Per Udacity project guide lines
 
 In this game you have a Player and Enemies (bugs). The goal of the player is to reach the water, without colliding into any one of the enemies.
